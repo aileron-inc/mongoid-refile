@@ -5,7 +5,7 @@ require 'mongoid'
 module Mongoid::Refile
   extend ActiveSupport::Concern
 
-  class Attachment
+  module Attachment
     extend Refile::Attachment
 
     def attachment(name, raise_errors: false, **_options)
