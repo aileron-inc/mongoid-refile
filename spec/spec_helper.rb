@@ -1,4 +1,4 @@
-require 'refile/mongoid'
+require 'mongoid/refile'
 require 'mongoid'
 require 'tmpdir'
 

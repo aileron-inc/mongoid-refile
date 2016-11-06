@@ -8,13 +8,13 @@ end
 
 RSpec.describe Mongoid::Refile do
   it 'caches attachments on assignment' do
-    user = User.new(avatar: File.open('refile-mongoid.gemspec'))
+    user = User.new(avatar: File.open('mongoid-refile.gemspec'))
 
     expect(user.avatar).not_to eq nil
   end
 
   it 'stores attachments on saving' do
-    user = User.new(avatar: File.open('refile-mongoid.gemspec'))
+    user = User.new(avatar: File.open('mongoid-refile.gemspec'))
     user.save
 
     expect(User.find(user.id).avatar_id).not_to be_empty
@@ -22,7 +22,7 @@ RSpec.describe Mongoid::Refile do
   end
 
   it 'replaces attachments on saving' do
-    user = User.new(avatar: File.open('refile-mongoid.gemspec'))
+    user = User.new(avatar: File.open('mongoid-refile.gemspec'))
     user.save
     old_avatar = user.avatar
 
@@ -34,7 +34,7 @@ RSpec.describe Mongoid::Refile do
   end
 
   it 'deletes attachments on saving' do
-    user = User.new(avatar: File.open('refile-mongoid.gemspec'))
+    user = User.new(avatar: File.open('mongoid-refile.gemspec'))
     user.save
 
     user.update(remove_avatar: true)
@@ -44,7 +44,7 @@ RSpec.describe Mongoid::Refile do
   end
 
   it 'deletes attachments on destroying' do
-    user = User.new(avatar: File.open('refile-mongoid.gemspec'))
+    user = User.new(avatar: File.open('mongoid-refile.gemspec'))
     user.save
 
     user.destroy
