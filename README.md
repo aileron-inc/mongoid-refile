@@ -7,17 +7,15 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'refile-mongoid'
+gem 'mongoid-refile'
 ```
 
 ## Usage
 
 ```ruby
-require "refile/mongoid"
-
 class User
   include Mongoid::Document
-  extend Refile::Mongoid::Attachment
+  include Mongoid::Refile
 
   attachment :profile_image
 end
