@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-refile'
-  gem.version       = '0.0.1'
+  gem.version       = '0.0.2'
 
   gem.required_ruby_version = '>= 2.1.0'
 
