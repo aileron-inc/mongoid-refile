@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-refile'
-  gem.version       = '0.0.4'
+  gem.version       = '0.0.5'
 
   gem.required_ruby_version = '>= 2.1.0'
 
@@ -20,5 +20,6 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'rake', '~> 10.0'
   gem.add_development_dependency 'rspec', '~> 3.3'
+  gem.add_development_dependency 'pry'
   gem.add_development_dependency 'mongoid-rspec', '~> 3.0.0'
 end

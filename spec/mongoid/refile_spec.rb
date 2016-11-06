@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 class User
   include Mongoid::Document
@@ -9,7 +10,6 @@ end
 RSpec.describe Mongoid::Refile do
   it 'caches attachments on assignment' do
     user = User.new(avatar: File.open('mongoid-refile.gemspec'))
-
     expect(user.avatar).not_to eq nil
   end
 
@@ -17,7 +17,9 @@ RSpec.describe Mongoid::Refile do
     user = User.new(avatar: File.open('mongoid-refile.gemspec'))
     user.save
 
-    expect(User.find(user.id).avatar_id).not_to be_empty
+    p user.attributes
+
+    expect(User.find(user.id)[:avatar_id]).not_to be_empty
     expect(User.find(user.id).avatar).not_to eq nil
   end
 
@@ -28,7 +30,7 @@ RSpec.describe Mongoid::Refile do
 
     user.update(avatar: File.open('spec/spec_helper.rb'))
 
-    expect(User.find(user.id).avatar_id).not_to eq old_avatar.id
+    expect(User.find(user.id)[:avatar_id]).not_to eq old_avatar.id
     expect(User.find(user.id).avatar).not_to eq nil
     expect(old_avatar).not_to exist
   end
@@ -39,7 +41,7 @@ RSpec.describe Mongoid::Refile do
 
     user.update(remove_avatar: true)
 
-    expect(user.avatar_id).to eq nil
+    expect(user[:avatar_id]).to eq nil
     expect(user.avatar).to eq nil
   end
 

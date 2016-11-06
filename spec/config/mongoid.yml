@@ -1,6 +1,10 @@
 development:
-  sessions:
+  clients:
     default:
-      database: refile_mongoid_test
+      database: mongoid_refile_test
       hosts:
         - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1

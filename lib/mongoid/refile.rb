@@ -5,10 +5,10 @@ require 'mongoid'
 module Mongoid::Refile
   extend ActiveSupport::Concern
 
-  module Attachment
+  included do
     extend Refile::Attachment
 
-    def attachment(name, raise_errors: false, **_options)
+    def self.attachment(name, raise_errors: false, **_options)
       super
       attacher = "#{name}_attacher"
       field "#{name}_id".to_sym, type: String
@@ -30,9 +30,5 @@ module Mongoid::Refile
         end
       end
     end
-  end
-
-  included do
-    extend Attachment
   end
 end
